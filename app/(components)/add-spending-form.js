@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from "react"
-import { postNewSpending } from "./DataAccessLayer";
+import { postNewSpending } from "../(data-access)/data-access-layer";
 
 export default function AddSpendingForm(){
     const currencyOptions = ["USD", "HUF"];

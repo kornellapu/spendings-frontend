@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import AddSpendingForm from './AddSpendingForm'
+import AddSpendingForm from './(components)/add-spending-form'
 
 
 
