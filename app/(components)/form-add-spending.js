@@ -94,7 +94,7 @@ export default function FormAddSpending(){
                 )}
             </select>
 
-            <button className="flex flex-grow items-center justify-center m-2 px-3 bg-emerald-500 font-semibold text-white" 
+            <button className="flex flex-grow items-center justify-center m-2 px-3 bg-emerald-500 font-semibold text-white hover:bg-emerald-400" 
                 type="submit" 
                 onClick={() => {
                     setHideInitialDescriptionErrorStyle(false);

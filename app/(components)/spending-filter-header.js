@@ -18,7 +18,7 @@ export default function SpendingsHeader({currencyFilterOptions, currencyFilter, 
             
             <div className="flex">
                 { currencyFilterOptions.map( (element, index) =>
-                    <button className={`mx-1.5 px-2 min-w-[50px] ${element===currencyFilter?"bg-blue-300 font-bold text-blue-600":"bg-white"}`} 
+                    <button className={`mx-1.5 px-2 min-w-[50px] ${element===currencyFilter?"bg-blue-300 hover:bg-blue-400 font-bold text-blue-600":"bg-white hover:bg-blue-100"}`} 
                         onClick={() => setCurrencyFilter(element)} 
                         key={index}
                     >
