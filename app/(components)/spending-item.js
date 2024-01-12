@@ -17,14 +17,14 @@ export default function SpendingItem( {id, description, amount, currency, spent_
 
     return (
         <div id={id} className="flex flex-row items-stretch w-[600px] h-16 mb-2 p-3 bg-white" baseStyle="true">
-            <div className={`flex flex-row items-center justify-center w-10 h-10 bg-blue-300 mr-4 font-bold text-blue-600 rounded-md text-lg`}>
+            <div className={`flex flex-row items-center flex-grow-0 flex-shrink-0 justify-center w-10 h-10 bg-blue-300 mr-4 font-bold text-blue-600 rounded-md text-lg`}>
                 {currencyIconText()}
             </div> 
             <div className="flex flex-col flex-grow justify-center overflow-hidden text-sm">
                 <div className="font-bold text-base" >{description}</div>
                 <div className="text-sm text-gray-500" >{formatDate()}</div>
             </div>
-            <div className="flex flex-row flex-grow-0 items-center font-bold text-base mr-4" >
+            <div className="flex flex-row flex-grow-0 flex-shrink-0 items-center font-bold text-base mx-4" >
                 {currencyIconText() + " " + amount}
             </div>
             <div className="flex flex-row items-center ml-2">
