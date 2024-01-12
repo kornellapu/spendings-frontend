@@ -2,21 +2,13 @@
 
 import { useState } from "react";
 
-export default function SpendingsHeader(){
+export default function SpendingsHeader({currencyFilterOptions, currencyFilter, setCurrencyFilter}){
     const orderingOptions = {
         "spent_at": "Sort by Date ascending (default)",
         "-spent_at": "Sort by Date descending",
         "amount": "Sort by Amount ascending",
         "-amount": "Sort by Amount descending"
-    };
-
-    const currencyFilterOptions = [
-        "ALL",
-        "HUF",
-        "USD"
-    ];
-
-    const [currencyFilter, setCurrencyFilter] = useState(currencyFilterOptions[0]);
+    };    
 
     return(
         <div className="flex flex-row justify-between mt-12 mb-5 [&>*]:h-8">
