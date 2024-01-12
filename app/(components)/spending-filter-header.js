@@ -2,19 +2,17 @@
 
 import { useState } from "react";
 
-export default function SpendingsHeader({currencyFilterOptions, currencyFilter, setCurrencyFilter}){
-    const orderingOptions = {
-        "spent_at": "Sort by Date ascending (default)",
-        "-spent_at": "Sort by Date descending",
-        "amount": "Sort by Amount ascending",
-        "-amount": "Sort by Amount descending"
-    };    
-
+export default function SpendingsHeader({currencyFilterOptions, currencyFilter, setCurrencyFilter, orderingOptions, orderingOptionKey, setOrderingOptionKey}){  
     return(
         <div className="flex flex-row justify-between mt-12 mb-5 [&>*]:h-8">
-            <select className="flex px-2 self-start">
+            <select className="flex px-2 self-start" 
+                onChange={ event => {
+                    setOrderingOptionKey(event.target.value);
+                }}
+                value={orderingOptionKey}    
+            >
                 { Object.entries(orderingOptions).map( (element, index) => 
-                    <option key={index} value={element[0]} >{element[1]}</option> 
+                    <option key={index} value={element[0]} >{element[1][0]}</option> 
                 )}
             </select>
             
