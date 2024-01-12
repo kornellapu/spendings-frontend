@@ -5,7 +5,6 @@ export async function getAllSpendings(){
 
     return fetch(dataRequest)
         .then( response => response.json() )
-        //.then( data => console.log(data) )
         .catch( console.error )
 }
 
@@ -29,7 +28,6 @@ export async function postNewSpending({description, amount, currency, spent_at})
 
     return fetch(sendData)
         .then( response => response.json() )
-        //.then( data => console.log(data) )
         .catch( console.error )
 
 }

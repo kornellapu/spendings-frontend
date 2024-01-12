@@ -25,8 +25,6 @@ export default function FormAddSpending(){
         const formJson = Object.fromEntries(formData.entries());
         
         formJson["spent_at"] = new Date().toISOString();
-
-        console.log(formJson);
         
         postNewSpending(formJson)
         .then( clearForm() );
@@ -36,6 +34,8 @@ export default function FormAddSpending(){
         setDescription("");
         setAmount(NaN);
         setSelectedCurrency( currencyOptions[0] );
+        setHideInitialAmountErrorStyle(true);
+        setHideInitialDescriptionErrorStyle(true);
     }
 
     function validateForm(){
