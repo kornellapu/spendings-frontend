@@ -1,4 +1,5 @@
 import './globals.css'
+import { robotoFlex } from './ui/fonts'
 
 export const metadata = {
   title: 'Spending Frontend',
@@ -8,7 +9,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body className={`${robotoFlex.className} antialiased`}>{children}</body>
     </html>
   )
 }
