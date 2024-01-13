@@ -72,6 +72,26 @@ In this case to setup Redux Store would make sense to reduce data passing throug
 
 If the task was a little bit bigger and more complex, I would definitely set up a Redux store for it.
 
+
+---
+
+### UI Library and Elements
+
+I did not used any other library like Material UI or its descendants.  
+After the project, I feel I should have used them to spare some time in development.  
+
+Next time I will definitely use some UI library for faster prototyping, even use the framework redefinitions for existing HTML elements from React (like Button, etc.).
+
+---
+
+### Animations
+
+I would like to add more animations, but the scope got a little bit bigger, than I could manage.  
+
+Also if there would be animations I would leave out Tailwind from the project.  
+It is good for prototyping, but in my opinion bigger projects does not scale well (in readability and complexity adds more layers).  
+I intend to use CSS Modules if there should be more animations, because it can be a better modular solution.
+
 ---
 
 <br>
