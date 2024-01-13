@@ -5,14 +5,14 @@ import { useState } from "react";
 export default function SpendingsHeader({currencyFilterOptions, currencyFilter, setCurrencyFilter, orderingOptions, orderingOptionKey, setOrderingOptionKey}){  
     return(
         <div className="flex flex-row justify-between mt-12 mb-5 [&>*]:h-8">
-            <select className="flex px-2 self-start" 
+            <select data-testid={"select-order"} className="flex px-2 self-start" 
                 onChange={ event => {
                     setOrderingOptionKey(event.target.value);
                 }}
                 value={orderingOptionKey}    
             >
                 { Object.entries(orderingOptions).map( (element, index) => 
-                    <option key={index} value={element[0]} >{element[1][0]}</option> 
+                    <option key={index} data-testid={element[0]} value={element[0]} >{element[1][0]}</option> 
                 )}
             </select>
             

@@ -1,9 +1,8 @@
 'use client'
 
 import { useState } from "react"
-import { postNewSpending } from "../(data-access)/data-access-layer";
 
-export default function FormAddSpending(){
+export default function FormAddSpending({postFunctionCallback, refreshSpendingsCallback}){
     const currencyOptions = ["USD", "HUF"];
 
     const [description, setDescription] = useState("");
@@ -26,8 +25,9 @@ export default function FormAddSpending(){
         
         formJson["spent_at"] = new Date().toISOString();
         
-        postNewSpending(formJson)
-        .then( clearForm() );
+        postFunctionCallback(formJson)
+        .then( clearForm )
+        .then( refreshSpendingsCallback );
     }
 
     function clearForm(){
@@ -61,10 +61,11 @@ export default function FormAddSpending(){
     }
 
     return(
-        <form className="flex flex-row items-center min-w-[600px] [&>*]:h-8" method="put" onSubmit={onHandleSubmit}>
+        <form className="flex flex-row items-center min-w-[600px] [&>*]:h-8" method="put" onSubmit={onHandleSubmit} data-testid="form">
             <input className={`m-2 px-3 border-2 border:transparent ${ hideInitialDescriptionErrorStyle?"":"invalid:border-red-600"}`} 
                 required 
                 type="text" 
+                data-testid="description"
                 name="description" 
                 value={description} 
                 onChange={ event => {
@@ -77,6 +78,7 @@ export default function FormAddSpending(){
             <input className={`m-2 px-3 border-2 border:transparent ${ hideInitialAmountErrorStyle?"":"invalid:border-red-600"}`}
                 required 
                 type="number" 
+                data-testid="amount"
                 name="amount" 
                 min="0" 
                 step="0.01" 
@@ -88,13 +90,19 @@ export default function FormAddSpending(){
                 placeholder="0" 
             />
 
-            <select className="ml-2 px-3" name="currency" value={selectedCurrency} onChange={ event => {setSelectedCurrency(event.target.value)} }>
+            <select className="ml-2 px-3" 
+                data-testid="currency"
+                name="currency" 
+                value={selectedCurrency} 
+                onChange={ event => {setSelectedCurrency(event.target.value)} }
+            >
                 { currencyOptions.map( (element, index) => 
                     <option value={element} key={index}>{element}</option> 
                 )}
             </select>
 
             <button className="flex flex-grow items-center justify-center m-2 px-3 bg-emerald-500 font-semibold text-white hover:bg-emerald-400" 
+                data-testid="save"
                 type="submit" 
                 onClick={() => {
                     setHideInitialDescriptionErrorStyle(false);

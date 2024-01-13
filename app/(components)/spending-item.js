@@ -16,7 +16,7 @@ export default function SpendingItem( {id, description, amount, currency, spent_
     }
 
     return (
-        <div id={id} className="flex flex-row items-stretch w-[600px] h-16 mb-2 p-3 bg-white" baseStyle="true">
+        <div id={id} currency={currency} className="flex flex-row items-stretch w-[600px] h-16 mb-2 p-3 bg-white" basestyle="true">
             <div className={`flex flex-row items-center flex-grow-0 flex-shrink-0 justify-center w-10 h-10 bg-blue-300 mr-4 font-bold text-blue-600 rounded-md text-lg`}>
                 {currencyIconText()}
             </div> 

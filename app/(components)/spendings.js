@@ -1,11 +1,11 @@
 'use client'
 
 import { Suspense, useEffect, useState } from "react";
-import { getAllSpendings } from "../(data-access)/data-access-layer";
+
 import SpendingsHeader from "./spending-filter-header";
 import SpendingItem from "./spending-item";
 
-export default function Spendings(){
+export default function Spendings({spendings}){
     const currencyFilterOptions = [
         "ALL",
         "HUF",
@@ -36,16 +36,11 @@ export default function Spendings(){
         ]
     };
 
-    const [spendings, setSpendings] = useState();
     const [currencyFilter, setCurrencyFilter] = useState(currencyFilterOptions[0]);
     const [orderingOptionKey, setOrderingOptionKey] = useState("-spent_at");
 
-    useEffect( ()=>{
-        getAllSpendings().then( data => setSpendings(data) )
-    }, []);
-
     return(
-        <div className="flex flex-col min-w-[600px]">
+        <div className="flex flex-col min-w-[600px]" data-testid="spendings-parent">
             <SpendingsHeader 
                 currencyFilterOptions={currencyFilterOptions} 
                 currencyFilter={currencyFilter} 
@@ -62,6 +57,7 @@ export default function Spendings(){
                 .sort( orderingOptions[orderingOptionKey].at(1) )
                 .map( item =>
                     <SpendingItem 
+                        key={item.id}
                         id={item.id} 
                         description={item.description}
                         amount={item.amount}
