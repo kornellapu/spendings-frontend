@@ -1,36 +1,84 @@
+# About the solution
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+For testing [Testing Library](https://testing-library.com/) and [JEST](https://jestjs.io/) was used.
 
-First, run the development server:
+---
+
+### Local Testing
+
+0. Prerequisites: Node.js and npm.  
+
+1. Clone the repository to your local machine.
+
+2. Run the command below to install node modules:
+```bash
+npm install
+```
+3. Build the solution with the following command:
+```bash
+npm run build
+```
+4. Run unit test with:
+```bash
+npm run test
+```  
+5. Then, run the development server:  
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
+6. Open http://localhost:3000 with your browser to see the result.  
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+7. You can interact with the solution.
+  
+<br>
+<br>
+<br>
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+# Remarks
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### Data timing
+The data is not registered instantly with the POST API calls.  
+You must wait (approximately a half day, maybe more) to appear in the database and after that can be the data pulled with the ".../spendings/" call.  
 
-## Learn More
+Also the data can be accessed instantly via specifing the id like ".../spendings/398/"
 
-To learn more about Next.js, take a look at the following resources:
+I hope I did not make mistake in the REST calls, causing this issue.  
+I double checked on the web framework, also there the newest data is not present.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Error handling
 
-## Deploy on Vercel
+The error handling is done by the default input system of the input HTML elements.  
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+If the form is not suitable (well it is ugly), in that case it can be upgraded by React in a few steps:  
+1. Add state variables to the component which needs better errors.
+2. Overwrite default error handling in the specific elements, with own functions.
+3. Connect the state with the new error handling.
+4. Add cinditional rendering to the error lables / elements.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+---
+
+### Redux Store
+
+Because this task was "smaller" one, I did not set up a React Redux store.  
+I used callbacks instead.  
+
+The data flows down in the DOM (from root to leaves), but even in this task there were cases where the data should flow upwards also in the tree (to notify other components).  
+In this case to setup Redux Store would make sense to reduce data passing through properties.  
+
+If the task was a little bit bigger and more complex, I would definitely set up a Redux store for it.
+
+---
+
+<br>
+<br>
+<br>
+
+I hope you will like my solution!  
+Have a great day!
+
+Kornél
